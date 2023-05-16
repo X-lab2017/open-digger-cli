@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  typescript:
+    specifier: ^5.0.4
+    version: 5.0.4
   unbuild:
     specifier: ^1.2.1
     version: 1.2.1
