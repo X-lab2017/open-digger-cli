@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 'use strict'
-console.log("Hello, OpenDigger CLI!");
+import '../dist/index.mjs'

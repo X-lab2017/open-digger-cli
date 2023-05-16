@@ -6,6 +6,8 @@
     "digger": "bin/index.mjs"
   },
   "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/stevending1st/open-digger-cli/issues"
   },
-  "homepage": "https://github.com/stevending1st/open-digger-cli#readme"
+  "homepage": "https://github.com/stevending1st/open-digger-cli#readme",
+  "devDependencies": {
+    "unbuild": "^1.2.1"
+  }
 }
