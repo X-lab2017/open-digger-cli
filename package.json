@@ -9,7 +9,8 @@
     "dev": "unbuild --stub",
     "build": "unbuild",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck"
+    "lint-staged": "lint-staged",
+    "test": "npm run typecheck && npm run lint-staged"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,19 @@
     "url": "https://github.com/stevending1st/open-digger-cli/issues"
   },
   "homepage": "https://github.com/stevending1st/open-digger-cli#readme",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "tabWidth": 2
+  },
+  "lint-staged": {
+    "*.{md,less,json,yml,ts,tsx}": "prettier --write"
+  },
   "devDependencies": {
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1"
   }
