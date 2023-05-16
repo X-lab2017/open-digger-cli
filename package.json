@@ -9,7 +9,7 @@
     "dev": "unbuild --stub",
     "build": "unbuild",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run typecheck"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/stevending1st/open-digger-cli#readme",
   "devDependencies": {
+    "husky": "^8.0.3",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1"
   }
