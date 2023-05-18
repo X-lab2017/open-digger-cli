@@ -34,7 +34,7 @@ cli.command(
           'technical_fork',
           'participants',
           'new_contributors',
-          'new_contributors',
+          'new_contributors_detail',
           'inactive_contributors',
           'bus_factor',
           'bus_factor_detail',
