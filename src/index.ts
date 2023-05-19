@@ -1,10 +1,10 @@
-import pkginfo from '../package.json';
+import { exit } from 'node:process';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+
+import pkginfo from '../package.json';
 import { metricList } from './metric/metricList';
 import { checkExample, checkMetric, checkTime } from './common/check';
-import { lightRed, lightYellow } from 'kolorist';
-import { getExampleType } from './common/analyze';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -39,31 +39,17 @@ cli.command(
           'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
       })
       .check(({ example, metric, time }) => {
-        console.log(
-          '--->check repo, user, metric, time ',
-          example,
-          metric,
-          time
-        );
-        if (example) {
-          if (!checkExample(example))
-            return `${lightRed('ERROR:')} Please confirm that the ${lightYellow(
-              example
-            )} is correct.`;
+        try {
+          if (example) {
+            checkExample(example);
+            if (metric) checkMetric(metric, example);
+          }
 
-          if (metric && !checkMetric(metric, getExampleType(example)))
-            return `${lightRed('ERROR:')} ${lightYellow(
-              example
-            )} does not have the specified metric.`;
+          if (time) checkTime(time);
+        } catch (error: any) {
+          console.log((error as Error).message);
+          exit(1);
         }
-
-        if (time) {
-          if (time && !checkTime(time))
-            return `${lightRed('ERROR:')} ${lightYellow(
-              time
-            )} does not conform to format (yyyyMM or yyyyMM-yyyyMM)`;
-        }
-
         return true;
       })
       .strict()
