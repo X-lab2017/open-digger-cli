@@ -5,6 +5,11 @@ export interface MetricDataByTimeIndexType {
   [key: string]: any;
 }
 
+export const filterRawMetricData = (data: MetricDataByTimeIndexType) =>
+  Object.keys(data)
+    .filter(k => k.length === 7)
+    .reduce((pre, cur) => ({ ...pre, [cur]: data[cur] }), {});
+
 export const filterMetricDataByTime = (
   data: MetricDataByTimeIndexType,
   time: string
