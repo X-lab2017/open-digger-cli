@@ -49,7 +49,7 @@ export const checkTime = (time: string) => {
       `${bgRed('ERROR:')} ${lightYellow(time)} ${red('is invalid.')}`
     );
 
-  if (!checkMonthIsBefore(`${startMonth}01`, `${endMonth}01`))
+  if (!checkMonthIsBefore(startMonth, endMonth))
     throw new Error(
       `${bgRed('ERROR:')} ${red('The')} ${lightYellow(startMonth)} ${red(
         'is not before the'
