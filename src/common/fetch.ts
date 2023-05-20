@@ -3,7 +3,10 @@ import { bgRed, lightYellow, red } from 'kolorist';
 
 import { metricInfo } from '../metric/metricInfo';
 
-export const fetchMetricData = async (example: string, metric: string) => {
+export async function fetchMetricData<T>(
+  example: string,
+  metric: string
+): Promise<T> {
   const response = await fetch(
     `https://oss.x-lab.info/open_digger/github/${example}/${metricInfo[metric].file}.json`
   );
@@ -15,5 +18,5 @@ export const fetchMetricData = async (example: string, metric: string) => {
       )} ${red('is invalid.')}`
     );
 
-  return response.json();
-};
+  return response.json() as T;
+}

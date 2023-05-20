@@ -1,7 +1,7 @@
 import { bgRed, lightYellow, red } from 'kolorist';
 
 import { getExampleType, getStartAndEndFromTime } from './analyze';
-import { checkDateIsyyyyMM, checkMonthIsBefore } from './day';
+import { checkDateIsValidyyyyMM, checkMonthIsBeforeyyyyMM } from './day';
 import { getMetricRoleMap } from './map';
 import { MetricReloEnum } from '../types';
 
@@ -42,14 +42,16 @@ export const checkTime = (time: string) => {
 
   const [startMonth, endMonth] = getStartAndEndFromTime(time);
 
-  const isStartMonthyyyyMM = startMonth ? checkDateIsyyyyMM(startMonth) : true;
-  const isEndMonthyyyyMM = endMonth ? checkDateIsyyyyMM(endMonth) : true;
+  const isStartMonthyyyyMM = startMonth
+    ? checkDateIsValidyyyyMM(startMonth)
+    : true;
+  const isEndMonthyyyyMM = endMonth ? checkDateIsValidyyyyMM(endMonth) : true;
   if (!isStartMonthyyyyMM || !isEndMonthyyyyMM)
     throw new Error(
       `${bgRed('ERROR:')} ${lightYellow(time)} ${red('is invalid.')}`
     );
 
-  if (startMonth && endMonth && !checkMonthIsBefore(startMonth, endMonth))
+  if (startMonth && endMonth && !checkMonthIsBeforeyyyyMM(startMonth, endMonth))
     throw new Error(
       `${bgRed('ERROR:')} ${red('The')} ${lightYellow(startMonth)} ${red(
         'is not before the'
