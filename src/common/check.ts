@@ -21,10 +21,10 @@ export const checkExample = (example: string) => {
 export const checkMetric = (metric: string[], example: string) => {
   const exampleType = getExampleType(example);
   const metricRoleMap = getMetricRoleMap();
-  const flag = metric.some(item =>
-    metricRoleMap.get(item).includes(exampleType)
-  );
-  if (flag)
+  const flag = metric
+    .filter(Boolean)
+    .some(item => !!metricRoleMap.get(item)?.includes(exampleType));
+  if (!flag)
     throw new Error(
       `${bgRed('ERROR:')} ${lightYellow(example)} ${red(
         'does not have the specified metric.'
