@@ -6,28 +6,13 @@ export const checkDateIsValid = (date: string, format: string) =>
 export const checkDateIsyyyyMM = (date: string) =>
   checkDateIsValid(date, 'YYYYMM');
 
-export const checkDayIsBefore = (startDay: string, endDay: string) => {
-  console.log(
-    endDay,
-    dateAndTime.parse(endDay, 'YYYYMMDD'),
-    startDay,
-    dateAndTime.parse(startDay, 'YYYYMMDD'),
-    dateAndTime
-      .subtract(
-        dateAndTime.parse(endDay, 'YYYYMMDD'),
-        dateAndTime.parse(startDay, 'YYYYMMDD')
-      )
-      .toDays()
-  );
-  return (
-    dateAndTime
-      .subtract(
-        dateAndTime.parse(endDay, 'YYYYMMDD'),
-        dateAndTime.parse(startDay, 'YYYYMMDD')
-      )
-      .toDays() > 0
-  );
-};
+export const checkDayIsBefore = (startDay: string, endDay: string) =>
+  dateAndTime
+    .subtract(
+      dateAndTime.parse(endDay, 'YYYYMMDD'),
+      dateAndTime.parse(startDay, 'YYYYMMDD')
+    )
+    .toDays() > 0;
 
 export const checkMonthIsBefore = (startMonth: string, endMonth: string) =>
   checkDayIsBefore(`${startMonth}01`, `${endMonth}01`);
