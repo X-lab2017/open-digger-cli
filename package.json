@@ -1,6 +1,6 @@
 {
   "name": "@stevending1st/open-digger-cli",
-  "version": "0.0.1",
+  "version": "0.0.1-bate-0.0.1",
   "description": "OpenDigger CLI",
   "bin": {
     "digger": "bin/index.mjs"
@@ -14,7 +14,8 @@
     "build": "unbuild",
     "typecheck": "tsc --noEmit",
     "lint-staged": "lint-staged",
-    "test": "npm run typecheck && npm run lint-staged"
+    "test": "npm run typecheck && npm run lint-staged",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
