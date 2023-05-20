@@ -5,6 +5,7 @@ import { hideBin } from 'yargs/helpers';
 import pkginfo from '../package.json';
 import { metricList } from './metric/metricList';
 import { checkExample, checkMetric, checkTime } from './common/check';
+import { fetchAndFilterSingleMetricData } from './common/metric';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -54,7 +55,25 @@ cli.command(
       })
       .strict()
       .help(),
-  ({ metric, time, example }) => {
+  async ({ metric, time, example }) => {
+    try {
+      if (example && metric && metric.length > 0) {
+        for (let metricItem of metric) {
+          const data = await fetchAndFilterSingleMetricData(
+            example,
+            metricItem,
+            time
+          );
+          console.log(
+            `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
+            data
+          );
+        }
+      }
+    } catch (error: any) {
+      console.log((error as Error).message);
+      exit(1);
+    }
     console.log('digger:', example, metric, time);
   }
 );
