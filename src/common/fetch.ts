@@ -3,7 +3,7 @@ import { bgRed, lightYellow, red } from 'kolorist';
 
 import { metricInfo } from '../metric/metricInfo';
 
-export async function fetchSingleMetricData<T>(
+export async function fetchMetricData<T>(
   example: string,
   metric: string
 ): Promise<T> {

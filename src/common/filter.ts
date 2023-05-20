@@ -1,17 +1,21 @@
 import { getStartAndEndFromTime } from './analyze';
 import { isSameOrBeforeMonthRangeyyyyMM } from './day';
 
-export interface MetricDataByTimeIndexType {
+export interface MetricDataIndexByTime {
   [key: string]: any;
 }
 
-export const filterRawMetricData = (data: MetricDataByTimeIndexType) =>
+export interface MetricDataIndexByTagAndTime {
+  [key: string]: MetricDataIndexByTime;
+}
+
+export const filterIndexByTimeRawMetricData = (data: MetricDataIndexByTime) =>
   Object.keys(data)
     .filter(k => k.length === 7)
     .reduce((pre, cur) => ({ ...pre, [cur]: data[cur] }), {});
 
-export const filterMetricDataByTime = (
-  data: MetricDataByTimeIndexType,
+export const filterIndexByTimeMetricDataByTime = (
+  data: MetricDataIndexByTime,
   time: string
 ) => {
   const [startMonth, endMonth] = getStartAndEndFromTime(time);
@@ -30,3 +34,15 @@ export const filterMetricDataByTime = (
     })
     .reduce((pre, cur) => ({ ...pre, [cur]: data[cur] }), {});
 };
+
+export const filterIndexByTagAndTimeMetricDataByTime = async (
+  data: MetricDataIndexByTagAndTime,
+  time: string
+) =>
+  Object.keys(data).reduce(
+    (pre, cur) => ({
+      ...pre,
+      [cur]: filterIndexByTimeMetricDataByTime(data[cur], time)
+    }),
+    {}
+  );

@@ -1,8 +1,10 @@
-import { fetchSingleMetricData } from './fetch';
+import { DataIndexByEnum, metricInfo } from '../metric/metricInfo';
+import { fetchMetricData } from './fetch';
 import {
-  MetricDataByTimeIndexType,
-  filterMetricDataByTime,
-  filterRawMetricData
+  MetricDataIndexByTime,
+  filterIndexByTagAndTimeMetricDataByTime,
+  filterIndexByTimeMetricDataByTime,
+  filterIndexByTimeRawMetricData
 } from './filter';
 
 export const fetchAndFilterSingleMetricData = async (
@@ -10,11 +12,18 @@ export const fetchAndFilterSingleMetricData = async (
   metric: string,
   time?: string
 ) => {
-  const primitiveData = await fetchSingleMetricData<MetricDataByTimeIndexType>(
+  const primitiveData = await fetchMetricData<MetricDataIndexByTime>(
     example,
     metric
   );
-  return time
-    ? filterMetricDataByTime(primitiveData, time)
-    : filterRawMetricData(primitiveData);
+
+  if (metricInfo[metric]?.dataIndexBy === DataIndexByEnum.TIME)
+    return time
+      ? filterIndexByTimeMetricDataByTime(primitiveData, time)
+      : filterIndexByTimeRawMetricData(primitiveData);
+
+  if (metricInfo[metric]?.dataIndexBy === DataIndexByEnum.TAG_AND_TIME)
+    return time
+      ? filterIndexByTagAndTimeMetricDataByTime(primitiveData, time)
+      : primitiveData;
 };
