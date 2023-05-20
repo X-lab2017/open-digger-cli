@@ -33,10 +33,10 @@ export const checkMetric = (metric: string[], example: string) => {
 };
 
 export const checkTime = (time: string) => {
-  if (!/^(20\d{4})(-20\d{4})?$/g.test(time))
+  if (!/^(\d{6}-?)$|^(-?\d{6})$|^(\d{6}-\d{6})$/g.test(time))
     throw new Error(
       `${bgRed('ERROR:')} ${lightYellow(time)} ${red(
-        'does not conform to format (YYYYMM or YYYYMM-YYYYMM)'
+        'does not conform to format (YYYYMM, -YYYYMM, YYYYMM- or YYYYMM-YYYYMM).'
       )}`
     );
 
@@ -49,7 +49,7 @@ export const checkTime = (time: string) => {
       `${bgRed('ERROR:')} ${lightYellow(time)} ${red('is invalid.')}`
     );
 
-  if (!checkMonthIsBefore(startMonth, endMonth))
+  if (startMonth && endMonth && !checkMonthIsBefore(startMonth, endMonth))
     throw new Error(
       `${bgRed('ERROR:')} ${red('The')} ${lightYellow(startMonth)} ${red(
         'is not before the'
