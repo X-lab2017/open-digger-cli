@@ -1,9 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  dayjs:
-    specifier: ^1.11.7
-    version: 1.11.7
+  date-and-time:
+    specifier: ^3.0.0
+    version: 3.0.0
   kolorist:
     specifier: ^1.8.0
     version: 1.8.0
@@ -15,6 +15,9 @@ dependencies:
     version: 17.7.2
 
 devDependencies:
+  '@types/date-and-time':
+    specifier: ^0.13.0
+    version: 0.13.0
   '@types/node':
     specifier: ^20.1.7
     version: 20.1.7
@@ -591,6 +594,10 @@ packages:
       rollup: 3.21.8
     dev: true
 
+  /@types/date-and-time@0.13.0:
+    resolution: {integrity: sha512-kHEncapIgrqaY8r2tyb19EvdKyhNjwheLl5cYTorsWJtURoI+oGm5ehW8CLAaq4dvu8x9z56FcXqAT4Mm5Nvzw==}
+    dev: true
+
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
@@ -808,8 +815,8 @@ packages:
     engines: {node: '>= 12'}
     dev: false
 
-  /dayjs@1.11.7:
-    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+  /date-and-time@3.0.0:
+    resolution: {integrity: sha512-uuzXp/mvv6jEMLiP5QzERSQPzHqYnv9i8NZ8BS5kYeB2sakv74EewQiCS4Ahxwq3In+9fYZhGztuDHRVzIOkFQ==}
     dev: false
 
   /debug@4.3.4:

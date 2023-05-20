@@ -1,10 +1,14 @@
 {
-  "name": "open-digger-cli",
+  "name": "@stevending1st/open-digger-cli",
   "version": "0.0.1",
   "description": "OpenDigger CLI",
   "bin": {
     "digger": "bin/index.mjs"
   },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild",
@@ -32,12 +36,13 @@
     "*.{md,less,json,yml,ts,tsx}": "prettier --write"
   },
   "dependencies": {
-    "dayjs": "^1.11.7",
+    "date-and-time": "^3.0.0",
     "kolorist": "^1.8.0",
     "node-fetch": "^3.3.1",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@types/date-and-time": "^0.13.0",
     "@types/node": "^20.1.7",
     "@types/yargs": "^17.0.24",
     "husky": "^8.0.3",
