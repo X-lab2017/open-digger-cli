@@ -1,10 +1,15 @@
 {
-  "include": ["build.config.ts", "src", "__tests__"],
+  "include": ["build.config.ts", "src", "report_web/src", "__tests__"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "es2017",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "esnext",
     "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "noEmit": true,
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
@@ -13,5 +18,8 @@
     "declaration": false,
     "sourceMap": false,
     "noUnusedLocals": true,
-  }
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
