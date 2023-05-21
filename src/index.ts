@@ -6,6 +6,8 @@ import pkginfo from '../package.json';
 import { metricList } from './metric/metricList';
 import { checkExample, checkMetric, checkTime } from './common/check';
 import { fetchAndFilterSingleMetricData } from './common/metric';
+import { getPDF } from './export';
+import { createWebServer } from './fe_build';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -82,8 +84,15 @@ cli.command(
   'chat',
   'Query metrics through conversation',
   args => args.strict().help(),
-  () => {
-    console.log('chat');
+  async () => {
+    console.log('---chat----');
+    const server = await createWebServer();
+    await server.listen();
+    server.printUrls();
+    console.log('--->', server?.resolvedUrls?.local[0]);
+    const url = server?.resolvedUrls?.local[0];
+    if (url) await getPDF(url);
+    server.close();
   }
 );
 

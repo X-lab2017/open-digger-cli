@@ -25,11 +25,10 @@ export const getViteConfig = (data?: Object) => {
 
 export const createWebServer = async (data?: Object) => {
   const viteConfig = getViteConfig(data);
-  const server = await createServer({
+
+  return createServer({
     ...viteConfig,
     configFile: false,
     root: __dirname
   });
-  await server.listen();
-  server.printUrls();
 };
