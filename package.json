@@ -13,7 +13,7 @@
     "dev": "unbuild --stub",
     "build": "unbuild",
     "dev:report": "vite report_web",
-    "build:report": "tsc && vite build report_web --outDir ../report_web_dist",
+    "build:report": "tsc --noEmit && vite build report_web --outDir ../report_web_dist",
     "preview:report": "vite preview --outDir report_web_dist",
     "typecheck": "tsc --noEmit",
     "lint-staged": "lint-staged",

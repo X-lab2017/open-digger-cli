@@ -3,8 +3,12 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
+import msg from 'virtual:open-digger-data';
+
 function App() {
   const [count, setCount] = useState(0);
+
+  console.log('virtual:open-digger-data: ', msg);
 
   return (
     <>
