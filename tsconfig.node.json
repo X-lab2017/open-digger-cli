@@ -6,5 +6,5 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["report_web/vite.config.ts", "src/plugin"]
+  "include": ["mock/*.json"]
 }

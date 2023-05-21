@@ -4,6 +4,8 @@ export default function openDiggerDataPlugin(data?: Object): Plugin {
   const virtualModuleId = 'virtual:open-digger-data';
   const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
+  const metricsData = data || {};
+
   return {
     name: 'open-digger-data',
     resolveId(id) {
@@ -13,9 +15,9 @@ export default function openDiggerDataPlugin(data?: Object): Plugin {
     },
     load(id) {
       if (id === resolvedVirtualModuleId) {
-        return `export const data = ${
-          data ? JSON.stringify(data) : '{}'
-        }; export default data;`;
+        return `export const data = ${JSON.stringify(
+          metricsData
+        )}; export default data;`;
       }
     }
   };

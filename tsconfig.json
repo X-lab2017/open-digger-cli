@@ -1,5 +1,5 @@
 {
-  "include": ["build.config.ts", "src", "report_web/src", "__tests__"],
+  "include": ["build.config.ts", "src", "report_web", "__tests__"],
   "compilerOptions": {
     "outDir": "dist",
     "target": "es2017",
