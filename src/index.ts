@@ -60,6 +60,14 @@ cli.command(
   async ({ metric, time, example }) => {
     try {
       if (example && metric && metric.length > 0) {
+        if (example.includes('/')) {
+          const [owner, name] = example?.split('/');
+          console.log(`repo.owner: ${owner}`);
+          console.log(`repo.name: ${name}`);
+        } else {
+          console.log(`user: ${example}`);
+        }
+        console.log(`repo.url:https://github.com/${example}`);
         for (let metricItem of metric) {
           const data = await fetchAndFilterSingleMetricData(
             example,
