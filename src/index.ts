@@ -8,6 +8,7 @@ import { checkExample, checkMetric, checkTime } from './common/check';
 import { fetchAndFilterSingleMetricData } from './common/metric';
 import { getPDF } from './export';
 import { createWebServer } from './fe_build';
+import metricData from '../mock/metricData.json';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -94,7 +95,22 @@ cli.command(
   args => args.strict().help(),
   async () => {
     console.log('---chat----');
-    const server = await createWebServer();
+  }
+);
+
+cli.command(
+  'export',
+  'Export a static file',
+  args => args.strict().help(),
+  async () => {
+    console.log('---export----');
+    const server = await createWebServer({
+      info: {
+        owner: 'owner1',
+        name: 'test'
+      },
+      metricData
+    });
     await server.listen();
     server.printUrls();
     console.log('--->', server?.resolvedUrls?.local[0]);

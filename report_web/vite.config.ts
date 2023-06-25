@@ -8,5 +8,14 @@ export default defineConfig({
   css: {
     postcss: {}
   },
-  plugins: [react(), openDiggerDataPlugin(metricData)]
+  plugins: [
+    react(),
+    openDiggerDataPlugin({
+      info: {
+        owner: 'testOwner',
+        name: 'testName'
+      },
+      metricData
+    })
+  ]
 });
