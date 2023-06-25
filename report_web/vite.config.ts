@@ -5,5 +5,8 @@ import metricData from '../mock/metricData.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    postcss: {}
+  },
   plugins: [react(), openDiggerDataPlugin(metricData)]
 });
