@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>复赛-T2-该叫什么队.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="open-digger-cli">open-digger-cli</h1>
+<blockquote>
+<p>📈 一个查询 <a href="https://github.com/X-lab2017/open-digger">open-digger</a> 指标的 CLI 工具。</p>
+</blockquote>
+<h2 id="%F0%9F%92%A1-%E5%8A%9F%E8%83%BD--%E8%B7%AF%E7%BA%BF%E5%9B%BE">💡 功能 &amp; 路线图</h2>
+<ul>
+<li>✅ 基础的指标查询，支持指定特定的指标、时间范围。</li>
+<li>✅ 生成 pdf 报告，支持指定特定的指标、时间范围。</li>
+<li>🚧<sup style="color: red;">*</sup> 支持对话式交互，使用更友好。</li>
+<li>🚧<sup style="color: red;">*</sup> 支持更多的报告输出格式。</li>
+<li>🚧<sup style="color: red;">*</sup> 为生成报告添加<strong>插件系统</strong>，让使用者自定义更多内容。</li>
+<li>🚧<sup style="color: red;">*</sup> 为命令行查询工具添加<strong>插件系统</strong>，让使用者自定义更多内容。</li>
+</ul>
+<h6><sup style="color: red;">*</sup>标记功能已完成功能验证，由于工期，不保证在决赛提交时释出</h6>
+<h2 id="%F0%9F%A7%B6-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF">🧶 设计思路</h2>
+<p>命令行获取命令和参数后，解析数据，根据子命令执行不同操作（在执行操作前会向 open-digger 提供的数据服务进行数据拉取）：</p>
+<p>数据查询功能：将获取的数据打印到命令行工具；</p>
+<p>数据导出功能：将获取的数据根据命令，使用不同的引擎进行渲染，再进行不同形式的导出。</p>
+<p>在此过程中，open-digger-cli 计划提供丰富的 hook，以便用户根据自己的需要进行数据展示。</p>
+<h2 id="%F0%9F%92%A3-%E5%AE%9E%E7%8E%B0%E9%9A%BE%E7%82%B9">💣 实现难点</h2>
+<ol>
+<li>
+<p>支持 <code>json</code>、<code>yml</code> 等配置文件难度较低，但可拓展性有限；目前计划支持 <code>js</code>、<code>mjs</code> 等配置文件，增强软件的可拓展性，但难度较之前大大提高。</p>
+</li>
+<li>
+<p>目前计划支持 pdf 导出，数据传递及数据展示难度都较大，pdf 按预期格式导出也具有一定困难。</p>
+</li>
+</ol>
+<h2 id="%F0%9F%94%A7-%E5%AE%89%E8%A3%85">🔧 安装</h2>
+<p>本工具基于 Node.js，请在本工具前安装前 Node.js 环境。</p>
+<pre class="hljs"><code><div>npm i -g @stevending1st/open-digger-cli
+</div></code></pre>
+<h6><sup style="color: red;">*</sup>本工具尚未释出，具体的安装命令行需要等释出时最终确定。</h6>
+<h2 id="%E2%8C%A8%EF%B8%8F-%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8">⌨️ 命令行使用</h2>
+<h3 id="%E7%89%88%E6%9C%AC%E6%9F%A5%E8%AF%A2">版本查询</h3>
+<pre class="hljs"><code><div>digger --version
+
+<span class="hljs-comment"># 或</span>
+
+digger -v
+</div></code></pre>
+<h3 id="%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4">帮助命令</h3>
+<h4 id="%E5%85%A8%E5%B1%80%E5%B8%AE%E5%8A%A9">全局帮助</h4>
+<pre class="hljs"><code><div>digger --<span class="hljs-built_in">help</span>
+
+<span class="hljs-comment"># 或</span>
+
+digger -h
+</div></code></pre>
+<h3 id="%E5%AD%90%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9">子命令帮助</h3>
+<pre class="hljs"><code><div>digger --<span class="hljs-built_in">help</span> &lt;<span class="hljs-built_in">command</span>&gt;
+
+<span class="hljs-comment"># 或</span>
+
+digger -h &lt;<span class="hljs-built_in">command</span>&gt;
+</div></code></pre>
+<p><code>&lt;command&gt;</code>: 子命令，目前支持 <code>chat</code>、<code>export</code></p>
+<h3 id="%E6%8C%87%E6%A0%87%E6%9F%A5%E8%AF%A2">指标查询</h3>
+<p>查询指定仓库/用户的指标。</p>
+<pre class="hljs"><code><div>digger &lt;example&gt; -m &lt;metrics&gt; [-t &lt;time&gt;]
+</div></code></pre>
+<ul>
+<li><code>&lt;example&gt;</code>：指定一个仓库或者用户。例如：<code>X-lab2017/open-digger</code>、<code>stevending1st</code>。</li>
+<li><code>&lt;metrics&gt;</code>：指定查询的指标，支持多个指标，多个查询用 <code>,</code> 连接。例如：<code>openrank</code>、<code>openrank,activity</code>。
+目前支持参数：<code>openrank</code>、<code>activity</code>、<code>attention</code>、<code>active_dates_and_times</code>、<code>stars</code>、<code>technical_fork</code>、<code>participants</code>、<code>new_contributors</code>、<code>new_contributors_detail</code>、<code>inactive_contributors</code>、<code>bus_factor</code>、<code>bus_factor_detail</code>、<code>issues_new</code>、<code>issues_closed</code>、<code>issue_comments</code>、<code>issue_response_time</code>、<code>issue_resolution_duration</code>、<code>issue_age</code>、<code>code_change_lines</code>、<code>code_change_lines_add</code>、<code>code_change_lines_remove</code>、<code>code_change_lines_sum</code>、<code>change_requests</code>、<code>change_requests_accepted</code>、<code>change_requests_reviews</code>、<code>change_request_response_time</code>、<code>change_request_resolution_duration</code>、<code>change_request_age</code>、<code>activity_details</code>。</li>
+<li><code>&lt;time&gt;</code>：查询的时间范围，格式为 yyyyMM 或 yyyyMM-yyyyMM 。例如：<code>202203</code>、<code>201912-202212</code>。</li>
+</ul>
+<h4 id="%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E4%BB%93%E5%BA%93%E7%9A%84%E6%8C%87%E5%AE%9A%E6%8C%87%E6%A0%87">查询指定仓库的指定指标</h4>
+<pre class="hljs"><code><div>digger &lt;example&gt; -m &lt;metrics&gt;
+</div></code></pre>
+<p>例如：<code>digger X-lab2017/open-digger -m openrank</code></p>
+<pre class="hljs"><code><div>repo.openrank:  {
+  <span class="hljs-string">'2020-08'</span>: 4.5,
+  <span class="hljs-string">'2020-09'</span>: 4.91,
+  <span class="hljs-string">'2020-10'</span>: 5.59,
+  <span class="hljs-string">'2020-11'</span>: 6.31,
+  <span class="hljs-string">'2020-12'</span>: 9.96,
+  <span class="hljs-string">'2021-01'</span>: 10.61,
+  <span class="hljs-string">'2021-02'</span>: 6.28,
+  <span class="hljs-string">'2021-03'</span>: 4.14,
+  <span class="hljs-string">'2021-04'</span>: 4.44,
+  <span class="hljs-string">'2021-05'</span>: 4.26,
+  <span class="hljs-string">'2021-06'</span>: 6.46,
+  <span class="hljs-string">'2021-07'</span>: 4.84,
+  <span class="hljs-string">'2021-08'</span>: 3.93,
+  <span class="hljs-string">'2021-09'</span>: 3.34,
+  <span class="hljs-string">'2021-10'</span>: 3,
+  <span class="hljs-string">'2021-11'</span>: 2.89,
+  <span class="hljs-string">'2021-12'</span>: 3.33,
+  <span class="hljs-string">'2022-01'</span>: 4.71,
+  <span class="hljs-string">'2022-02'</span>: 4.87,
+  <span class="hljs-string">'2022-03'</span>: 6.06,
+  <span class="hljs-string">'2022-04'</span>: 3.76,
+  <span class="hljs-string">'2022-05'</span>: 4.14,
+  <span class="hljs-string">'2022-06'</span>: 7.67,
+  <span class="hljs-string">'2022-07'</span>: 9.17,
+  <span class="hljs-string">'2022-08'</span>: 8.53,
+  <span class="hljs-string">'2022-09'</span>: 9.96,
+  <span class="hljs-string">'2022-10'</span>: 11.84,
+  <span class="hljs-string">'2022-11'</span>: 14.65,
+  <span class="hljs-string">'2022-12'</span>: 19.36,
+  <span class="hljs-string">'2023-01'</span>: 19.9,
+  <span class="hljs-string">'2023-02'</span>: 40.48,
+  <span class="hljs-string">'2023-03'</span>: 22.05,
+  <span class="hljs-string">'2023-04'</span>: 18.79,
+  <span class="hljs-string">'2023-05'</span>: 18.42,
+  <span class="hljs-string">'2023-06'</span>: 14.3
+}
+</div></code></pre>
+<h4 id="%E6%9F%A5%E8%AF%A2%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BB%93%E5%BA%93%E7%9A%84%E6%8C%87%E5%AE%9A%E6%8C%87%E6%A0%87">查询时间范围的指定仓库的指定指标</h4>
+<pre class="hljs"><code><div>digger &lt;example&gt; -m &lt;metrics&gt; -t &lt;time&gt;
+</div></code></pre>
+<p>例如：<code>digger X-lab2017/open-digger -m openrank -t 202101-202112</code></p>
+<pre class="hljs"><code><div>repo.openrank:  {
+  <span class="hljs-string">'2021-01'</span>: 10.61,
+  <span class="hljs-string">'2021-02'</span>: 6.28,
+  <span class="hljs-string">'2021-03'</span>: 4.14,
+  <span class="hljs-string">'2021-04'</span>: 4.44,
+  <span class="hljs-string">'2021-05'</span>: 4.26,
+  <span class="hljs-string">'2021-06'</span>: 6.46,
+  <span class="hljs-string">'2021-07'</span>: 4.84,
+  <span class="hljs-string">'2021-08'</span>: 3.93,
+  <span class="hljs-string">'2021-09'</span>: 3.34,
+  <span class="hljs-string">'2021-10'</span>: 3,
+  <span class="hljs-string">'2021-11'</span>: 2.89,
+  <span class="hljs-string">'2021-12'</span>: 3.33
+}
+</div></code></pre>
+<h4 id="%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E4%BB%93%E5%BA%93%E7%9A%84%E6%8C%87%E5%AE%9A%E6%8C%87%E6%A0%87">查询指定仓库的指定指标</h4>
+<pre class="hljs"><code><div>digger &lt;example&gt; -m &lt;metrics&gt;
+</div></code></pre>
+<p>例如：<code>digger stevending1st -m openrank</code></p>
+<pre class="hljs"><code><div>user.openrank:  {
+  <span class="hljs-string">'2017-01'</span>: 0.72,
+  <span class="hljs-string">'2017-02'</span>: 0.61,
+  <span class="hljs-string">'2017-03'</span>: 0.52,
+  <span class="hljs-string">'2017-04'</span>: 0.44,
+  <span class="hljs-string">'2017-05'</span>: 0.38,
+  <span class="hljs-string">'2017-06'</span>: 0.32,
+  <span class="hljs-string">'2017-07'</span>: 0.27,
+  <span class="hljs-string">'2017-08'</span>: 0.23,
+  <span class="hljs-string">'2017-09'</span>: 0.2,
+  <span class="hljs-string">'2017-10'</span>: 0.17,
+  <span class="hljs-string">'2017-11'</span>: 0.14,
+  <span class="hljs-string">'2017-12'</span>: 0.12,
+  <span class="hljs-string">'2018-01'</span>: 0.1,
+  <span class="hljs-string">'2018-02'</span>: 0.09,
+  <span class="hljs-string">'2018-07'</span>: 0.98,
+  <span class="hljs-string">'2018-08'</span>: 0.83,
+  <span class="hljs-string">'2018-09'</span>: 0.7,
+  <span class="hljs-string">'2018-10'</span>: 0.6,
+  <span class="hljs-string">'2018-11'</span>: 0.51,
+  <span class="hljs-string">'2018-12'</span>: 0.43,
+  <span class="hljs-string">'2019-01'</span>: 0.37,
+  <span class="hljs-string">'2019-02'</span>: 0.31,
+  <span class="hljs-string">'2019-03'</span>: 0.27,
+  <span class="hljs-string">'2019-04'</span>: 0.23,
+  <span class="hljs-string">'2019-05'</span>: 0.19,
+  <span class="hljs-string">'2019-06'</span>: 0.16,
+  <span class="hljs-string">'2019-07'</span>: 0.14,
+  <span class="hljs-string">'2019-08'</span>: 0.66,
+  <span class="hljs-string">'2019-09'</span>: 0.56,
+  <span class="hljs-string">'2019-10'</span>: 0.48,
+  <span class="hljs-string">'2019-11'</span>: 0.41,
+  <span class="hljs-string">'2019-12'</span>: 0.34,
+  <span class="hljs-string">'2020-01'</span>: 1.01,
+  <span class="hljs-string">'2020-02'</span>: 0.86,
+  <span class="hljs-string">'2020-03'</span>: 0.73,
+  <span class="hljs-string">'2020-04'</span>: 0.49,
+  <span class="hljs-string">'2020-05'</span>: 0.42,
+  <span class="hljs-string">'2020-06'</span>: 0.36,
+  <span class="hljs-string">'2020-07'</span>: 0.3,
+  <span class="hljs-string">'2020-08'</span>: 0.26,
+  <span class="hljs-string">'2020-09'</span>: 0.22,
+  <span class="hljs-string">'2020-10'</span>: 0.39,
+  <span class="hljs-string">'2020-11'</span>: 0.39,
+  <span class="hljs-string">'2020-12'</span>: 0.33,
+  <span class="hljs-string">'2021-01'</span>: 0.48,
+  <span class="hljs-string">'2021-02'</span>: 0.4,
+  <span class="hljs-string">'2021-03'</span>: 1.03,
+  <span class="hljs-string">'2021-04'</span>: 1.48,
+  <span class="hljs-string">'2021-05'</span>: 1.57,
+  <span class="hljs-string">'2021-06'</span>: 1.98,
+  <span class="hljs-string">'2021-07'</span>: 2.01,
+  <span class="hljs-string">'2021-08'</span>: 3.52,
+  <span class="hljs-string">'2021-09'</span>: 3.57,
+  <span class="hljs-string">'2021-10'</span>: 3,
+  <span class="hljs-string">'2021-11'</span>: 2.78,
+  <span class="hljs-string">'2021-12'</span>: 2.36,
+  <span class="hljs-string">'2022-01'</span>: 2,
+  <span class="hljs-string">'2022-02'</span>: 4.01,
+  <span class="hljs-string">'2022-03'</span>: 5.07,
+  <span class="hljs-string">'2022-04'</span>: 2.93,
+  <span class="hljs-string">'2022-05'</span>: 2.1,
+  <span class="hljs-string">'2022-06'</span>: 1.88,
+  <span class="hljs-string">'2022-07'</span>: 1.22,
+  <span class="hljs-string">'2022-08'</span>: 0.76,
+  <span class="hljs-string">'2022-09'</span>: 1.72,
+  <span class="hljs-string">'2022-10'</span>: 4.79,
+  <span class="hljs-string">'2022-11'</span>: 3.66,
+  <span class="hljs-string">'2022-12'</span>: 2.63,
+  <span class="hljs-string">'2023-01'</span>: 1.86,
+  <span class="hljs-string">'2023-02'</span>: 2.93,
+  <span class="hljs-string">'2023-03'</span>: 2.08,
+  <span class="hljs-string">'2023-04'</span>: 3.04,
+  <span class="hljs-string">'2023-05'</span>: 2.9,
+  <span class="hljs-string">'2023-06'</span>: 3.38
+}
+</div></code></pre>
+<h4 id="%E6%9F%A5%E8%AF%A2%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4%E7%9A%84%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E7%9A%84%E6%8C%87%E5%AE%9A%E6%8C%87%E6%A0%87">查询时间范围的指定用户的指定指标</h4>
+<pre class="hljs"><code><div>digger &lt;example&gt; -m &lt;metrics&gt; -t &lt;time&gt;
+</div></code></pre>
+<p>例如：<code>digger stevending1st -m openrank -t 202101-202112</code></p>
+<pre class="hljs"><code><div>user.openrank:  {
+  <span class="hljs-string">'2021-01'</span>: 0.48,
+  <span class="hljs-string">'2021-02'</span>: 0.4,
+  <span class="hljs-string">'2021-03'</span>: 1.03,
+  <span class="hljs-string">'2021-04'</span>: 1.48,
+  <span class="hljs-string">'2021-05'</span>: 1.57,
+  <span class="hljs-string">'2021-06'</span>: 1.98,
+  <span class="hljs-string">'2021-07'</span>: 2.01,
+  <span class="hljs-string">'2021-08'</span>: 3.52,
+  <span class="hljs-string">'2021-09'</span>: 3.57,
+  <span class="hljs-string">'2021-10'</span>: 3,
+  <span class="hljs-string">'2021-11'</span>: 2.78,
+  <span class="hljs-string">'2021-12'</span>: 2.36
+}
+</div></code></pre>
+<h3 id="%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6">导出文件</h3>
+<pre class="hljs"><code><div>digger <span class="hljs-built_in">export</span> &lt;example&gt; -m &lt;metrics&gt; [-t &lt;time&gt;]
+</div></code></pre>
+<ul>
+<li><code>&lt;example&gt;</code>：指定一个仓库或者用户。例如：<code>X-lab2017/open-digger</code>、<code>stevending1st</code>。</li>
+<li><code>&lt;metrics&gt;</code>：指定查询的指标，支持多个指标，多个查询用 <code>,</code> 连接。例如：<code>openrank</code>、<code>openrank,activity</code>。
+目前支持参数：<code>openrank</code>、<code>activity</code>、<code>attention</code>、<code>active_dates_and_times</code>、<code>stars</code>、<code>technical_fork</code>、<code>participants</code>、<code>new_contributors</code>、<code>new_contributors_detail</code>、<code>inactive_contributors</code>、<code>bus_factor</code>、<code>bus_factor_detail</code>、<code>issues_new</code>、<code>issues_closed</code>、<code>issue_comments</code>、<code>issue_response_time</code>、<code>issue_resolution_duration</code>、<code>issue_age</code>、<code>code_change_lines</code>、<code>code_change_lines_add</code>、<code>code_change_lines_remove</code>、<code>code_change_lines_sum</code>、<code>change_requests</code>、<code>change_requests_accepted</code>、<code>change_requests_reviews</code>、<code>change_request_response_time</code>、<code>change_request_resolution_duration</code>、<code>change_request_age</code>、<code>activity_details</code>。</li>
+<li><code>&lt;time&gt;</code>：查询的时间范围，格式为 yyyyMM 或 yyyyMM-yyyyMM 。例如：<code>202203</code>、<code>201912-202212</code>。</li>
+</ul>
+<h2 id="%F0%9F%A7%A9-%E6%8F%92%E4%BB%B6">🧩 插件</h2>
+<p>本应用计划支持<strong>强大的插件功能</strong>，支持在命令行工具进行数据展示和生成报告等流程中调用 api 以自定义显示内容。</p>
+<p>例子：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> Table <span class="hljs-keyword">from</span> <span class="hljs-string">'cli-table3'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">cli</span>: {
+    <span class="hljs-attr">openRank</span>: <span class="hljs-function">(<span class="hljs-params">{ metric, time, example, data }</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> showData = [];
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> data) {
+        showData.push([key, data[key]]);
+      }
+
+      <span class="hljs-keyword">const</span> table = <span class="hljs-keyword">new</span> Table({
+        <span class="hljs-attr">head</span>: [<span class="hljs-string">'Time'</span>, <span class="hljs-string">'openRank'</span>],
+        <span class="hljs-attr">colWidths</span>: [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>]
+      });
+
+      table.push(...showData);
+
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${example}</span>'s <span class="hljs-subst">${metric}</span>(<span class="hljs-subst">${time}</span>):`</span>);
+
+      <span class="hljs-built_in">console</span>.log(table.toString());
+    }
+  }
+};
+</div></code></pre>
+<p>在配置文件所在目录执行：</p>
+<pre class="hljs"><code><div>digger X-lab2017/open-digger -m openrank -t 202201-202212
+</div></code></pre>
+<p>结果：</p>
+<pre class="hljs"><code><div>X-lab2017/open-digger<span class="hljs-string">'s openrank(202201-202212):
+┌──────────┬────────────────────┐
+│ Time     │ openRank           │
+├──────────┼────────────────────┤
+│ 2022-01  │ 4.71               │
+├──────────┼────────────────────┤
+│ 2022-02  │ 4.87               │
+├──────────┼────────────────────┤
+│ 2022-03  │ 6.06               │
+├──────────┼────────────────────┤
+│ 2022-04  │ 3.76               │
+├──────────┼────────────────────┤
+│ 2022-05  │ 4.14               │
+├──────────┼────────────────────┤
+│ 2022-06  │ 7.67               │
+├──────────┼────────────────────┤
+│ 2022-07  │ 9.17               │
+├──────────┼────────────────────┤
+│ 2022-08  │ 8.53               │
+├──────────┼────────────────────┤
+│ 2022-09  │ 9.96               │
+├──────────┼────────────────────┤
+│ 2022-10  │ 11.84              │
+├──────────┼────────────────────┤
+│ 2022-11  │ 14.65              │
+├──────────┼────────────────────┤
+│ 2022-12  │ 19.36              │
+└──────────┴────────────────────┘
+</span></div></code></pre>
+
+</body>
+</html>
