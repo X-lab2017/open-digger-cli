@@ -10,6 +10,7 @@ import { createWebServer } from './fe_build';
 import metricData from '../mock/metricData.json';
 import { loadConfig } from 'unconfig';
 import { metricInfo } from './metric/metricInfo';
+import { MetricValues } from './types';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -37,6 +38,13 @@ cli.command(
         choices: Object.values(metricInfo).map(({ file }) => file),
         array: true
       })
+      .option('type', {
+        alias: 'T',
+        type: 'string',
+        describe: 'Filter indicator type',
+        choices: MetricValues,
+        array: true
+      })
       .option('time', {
         alias: 't',
         type: 'string',
@@ -59,7 +67,7 @@ cli.command(
       })
       .strict()
       .help(),
-  async ({ metric, time, example }) => {
+  async ({ metric, time, type, example }) => {
     let diggerConfig;
     try {
       console.log('process.cwd()', process.cwd());
@@ -108,7 +116,7 @@ cli.command(
       console.log((error as Error).message);
       exit(1);
     }
-    console.log('digger:', example, metric, time);
+    console.log('digger:', example, metric, type, time);
   }
 );
 
