@@ -56,18 +56,20 @@ export const exportFun = async ({
 
       metricData[metricItem] = data;
     }
-  }
+    const [owner, repoName] = example.split('/');
 
-  const server = await createWebServer({
-    info: {
-      owner: 'owner1',
-      name: 'test'
-    },
-    metricData
-  });
-  await server.listen();
-  server.printUrls();
-  const url = server?.resolvedUrls?.local[0];
-  if (url) await getPDF(url, 'hello');
-  server.close();
+    const server = await createWebServer({
+      info: {
+        owner,
+        name: repoName,
+        time
+      },
+      metricData
+    });
+    await server.listen();
+    server.printUrls();
+    const url = server?.resolvedUrls?.local[0];
+    if (url) await getPDF(url, 'hello');
+    server.close();
+  }
 };
