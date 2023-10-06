@@ -1,7 +1,12 @@
-export type MetricInfoItemType = Record<
-  'name' | 'type' | 'from' | 'file',
-  string
-> & { key: string[]; dataIndexBy: DataIndexByEnum };
+import { MetricFromEnum, MetricReloEnum, MetricTypeEnum } from '../types';
+
+export type MetricInfoItemType = Record<'name' | 'file', string> & {
+  key: string[];
+  type: MetricTypeEnum;
+  from: MetricFromEnum;
+  dataIndexBy: DataIndexByEnum;
+  role: MetricReloEnum[];
+};
 
 export interface MetricInfoType {
   [K: string]: MetricInfoItemType;
@@ -17,226 +22,254 @@ export enum DataIndexByEnum {
 export const metricInfo: MetricInfoType = {
   openrank: {
     name: 'OpenRank',
-    type: 'Index',
-    from: 'X-lab',
+    type: MetricTypeEnum.Index,
+    from: MetricFromEnum.XLab,
     file: 'openrank',
     key: ['openrank'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO, MetricReloEnum.USER]
   },
   activity: {
     name: 'Activity',
-    type: 'Index',
-    from: 'X-lab',
+    type: MetricTypeEnum.Index,
+    from: MetricFromEnum.XLab,
     file: 'activity',
     key: ['activity'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO, MetricReloEnum.USER]
   },
   attention: {
     name: 'Attention',
-    type: 'Index',
-    from: 'X-lab',
+    type: MetricTypeEnum.Index,
+    from: MetricFromEnum.XLab,
     file: 'attention',
     key: ['attention'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   active_dates_and_times: {
     name: 'Active dates and times',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'active_dates_and_times',
     key: ['active_dates_and_times'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   stars: {
     name: 'Stars',
-    type: 'Metric',
-    from: 'X-lab',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.XLab,
     file: 'stars',
     key: ['stars'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   technical_fork: {
     name: 'Technical fork',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'technical_fork',
     key: ['technical_fork'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   participants: {
     name: 'Participants',
-    type: 'Metric',
-    from: 'X-lab',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.XLab,
     file: 'participants',
     key: ['participants'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   new_contributors: {
     name: 'New contributors',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'new_contributors',
     key: ['new_contributors'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   new_contributors_detail: {
     name: 'New contributors (Detail)',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'new_contributors_detail',
     key: ['new_contributors', 'new_contributors_detail'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   inactive_contributors: {
     name: 'Inactive contributors',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'inactive_contributors',
     key: ['inactive_contributors'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   bus_factor: {
     name: 'Bus factor',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'bus_factor',
     key: ['bus_factor'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   bus_factor_detail: {
     name: 'Bus factor (Detail)',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'bus_factor_detail',
     key: ['bus_factor', 'bus_factor_detail'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issues_new: {
     name: 'Issues new',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'issues_new',
     key: ['issues_new'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issues_closed: {
     name: 'Issues closed',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'issues_closed',
     key: ['issues_closed'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_comments: {
     name: 'Issue comments',
-    type: 'Metric',
-    from: 'X-lab',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.XLab,
     file: 'issue_comments',
     key: ['issue_comments'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_response_time: {
     name: 'Issue response time',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'issue_response_time',
     key: ['issue_response_time'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_resolution_duration: {
     name: 'Issue resolution duration',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'issue_resolution_duration',
     key: ['issue_resolution_duration'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_age: {
     name: 'Issue age',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'issue_age',
     key: ['issue_age'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_add: {
     name: 'Code change lines add',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'code_change_lines_add',
     key: ['code_change_lines_add'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_remove: {
     name: 'Code change lines',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'code_change_lines_remove',
     key: ['code_change_lines_remove'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_sum: {
     name: 'Code change lines sum',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'code_change_lines_sum',
     key: ['code_change_lines_sum'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests: {
     name: 'Change requests (Open PR)',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_requests',
     key: ['change_requests'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests_accepted: {
     name: 'Change requests accepted(Merged PR)',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_requests_accepted',
     key: ['change_requests_accepted'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests_reviews: {
     name: 'Change requests reviews',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_requests_reviews',
     key: ['change_requests_reviews'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_response_time: {
     name: 'Change request response time',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_request_response_time',
     key: ['change_request_response_time'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_resolution_duration: {
     name: 'Change request resolution duration',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_request_resolution_duration',
     key: ['change_request_resolution_duration'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_age: {
     name: 'Change request age',
-    type: 'Metric',
-    from: 'CHAOSS',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.CHAOSS,
     file: 'change_request_age',
     key: ['change_request_age'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   activity_details: {
     name: 'Activity Details',
-    type: 'Metric',
-    from: 'X-lab',
+    type: MetricTypeEnum.Metric,
+    from: MetricFromEnum.XLab,
     file: 'activity_details',
     key: ['activity_details'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   }
 };

@@ -20,3 +20,18 @@ export async function fetchMetricData<T>(
 
   return response.json() as T;
 }
+
+export async function fetchMetaData<T>(owner: string): Promise<T> {
+  const response = await fetch(
+    `https://oss.x-lab.info/open_digger/github/${owner}/meta.json`
+  );
+
+  if (!response.ok)
+    throw new Error(
+      `${bgRed('ERROR:')} ${red('The data for')} ${lightYellow(owner)} ${red(
+        'does not exist.'
+      )}`
+    );
+
+  return response.json() as T;
+}

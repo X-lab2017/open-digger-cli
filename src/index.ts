@@ -1,11 +1,13 @@
-import { exit } from 'node:process';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
-import { metricList } from './metric/metricList';
-import { checkExample, checkMetric, checkTime } from './common/check';
-import { fetchAndFilterSingleMetricData } from './common/metric';
+import { getPDF } from './export';
+import { createWebServer } from './fe_build';
+import metricData from '../mock/metricData.json';
+import { metricInfo } from './metric/metricInfo';
+import { MetricFroms, MetricValues } from './types';
+import { search } from './search';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -30,7 +32,21 @@ cli.command(
         alias: 'm',
         type: 'string',
         describe: 'The metrics for the query',
-        choices: metricList.map(({ key }) => key),
+        choices: Object.values(metricInfo).map(({ file }) => file),
+        array: true
+      })
+      .option('type', {
+        alias: 'T',
+        type: 'string',
+        describe: 'Filter indicator type',
+        choices: MetricValues,
+        array: true
+      })
+      .option('from', {
+        alias: 'f',
+        type: 'string',
+        describe: 'Filter Metric sources',
+        choices: MetricFroms,
         array: true
       })
       .option('time', {
@@ -39,51 +55,39 @@ cli.command(
         describe:
           'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
       })
-      .check(({ example, metric, time }) => {
-        try {
-          if (example) {
-            checkExample(example);
-            if (metric) checkMetric(metric, example);
-          }
-
-          if (time) checkTime(time);
-        } catch (error: any) {
-          console.log((error as Error).message);
-          exit(1);
-        }
-        return true;
-      })
       .strict()
       .help(),
-  async ({ metric, time, example }) => {
-    try {
-      if (example && metric && metric.length > 0) {
-        for (let metricItem of metric) {
-          const data = await fetchAndFilterSingleMetricData(
-            example,
-            metricItem,
-            time
-          );
-          console.log(
-            `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
-            data
-          );
-        }
-      }
-    } catch (error: any) {
-      console.log((error as Error).message);
-      exit(1);
-    }
-    console.log('digger:', example, metric, time);
-  }
+  input => search(input)
 );
 
 cli.command(
   'chat',
   'Query metrics through conversation',
   args => args.strict().help(),
-  () => {
-    console.log('chat');
+  async () => {
+    console.log('---chat----');
+  }
+);
+
+cli.command(
+  'export',
+  'Export a static file',
+  args => args.strict().help(),
+  async () => {
+    console.log('---export----');
+    const server = await createWebServer({
+      info: {
+        owner: 'owner1',
+        name: 'test'
+      },
+      metricData
+    });
+    await server.listen();
+    server.printUrls();
+    console.log('--->', server?.resolvedUrls?.local[0]);
+    const url = server?.resolvedUrls?.local[0];
+    if (url) await getPDF(url);
+    server.close();
   }
 );
 
