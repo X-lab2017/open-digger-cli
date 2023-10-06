@@ -1,6 +1,11 @@
 import puppeteer from 'puppeteer';
 import { createWebServer } from './fe_build';
-import metricData from '../mock/metricData.json';
+import { SearchAndExportInput } from './types';
+import { checkExampleAndMetricAndTime } from './common/check';
+import {
+  fetchAndFilterSingleMetricData,
+  filterMetricList
+} from './common/metric';
 
 export const getPDF = async (url: string, fileName: string) => {
   const browser = await puppeteer.launch({ headless: 'new' });
@@ -26,17 +31,39 @@ export const getPDF = async (url: string, fileName: string) => {
   await browser.close();
 };
 
-export const exportFun = async () => {
+export const exportFun = async ({
+  metric,
+  time,
+  type,
+  from,
+  example
+}: SearchAndExportInput) => {
+  await checkExampleAndMetricAndTime({ example, metric, time });
+
+  // const diggerConfig = await loadDiggerConfig();
+
+  const metricList = filterMetricList(metric, type, from);
+
+  const metricData: Record<string, unknown> = {};
+
+  if (example && metricList && metricList.length > 0) {
+    for (let metricItem of metricList) {
+      const data = await fetchAndFilterSingleMetricData(
+        example,
+        metricItem,
+        time
+      );
+
+      metricData[metricItem] = data;
+    }
+  }
+
   const server = await createWebServer({
     info: {
       owner: 'owner1',
       name: 'test'
     },
-    metricData: {
-      openrank: metricData.openrank,
-      issues_closed: metricData.issues_closed,
-      issues_new: metricData.issues_new
-    }
+    metricData
   });
   await server.listen();
   server.printUrls();

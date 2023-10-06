@@ -68,10 +68,45 @@ cli.command(
 );
 
 cli.command(
-  'export',
+  'export [example]',
   'Export a static file',
-  args => args.strict().help(),
-  exportFun
+  args =>
+    args
+      .positional('example', {
+        type: 'string',
+        describe:
+          'User or repository, owner/repo or owner (e.g., X-lab2017/open-digger, torvalds)'
+      })
+      .option('metric', {
+        alias: 'm',
+        type: 'string',
+        describe: 'The metrics for the query',
+        choices: Object.values(metricInfo).map(({ file }) => file),
+        array: true
+      })
+      .option('type', {
+        alias: 'T',
+        type: 'string',
+        describe: 'Filter indicator type',
+        choices: MetricValues,
+        array: true
+      })
+      .option('from', {
+        alias: 'f',
+        type: 'string',
+        describe: 'Filter Metric sources',
+        choices: MetricFroms,
+        array: true
+      })
+      .option('time', {
+        alias: 't',
+        type: 'string',
+        describe:
+          'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
+      })
+      .strict()
+      .help(),
+  input => exportFun(input)
 );
 
 cli
