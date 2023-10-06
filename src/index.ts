@@ -61,23 +61,21 @@ cli.command(
         describe:
           'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
       })
-      .check(async ({ example, metric, time }) => {
-        try {
-          if (example) {
-            await checkExample(example);
-            if (metric) checkMetric(metric, example);
-          }
-
-          if (time) checkTime(time);
-        } catch (error: any) {
-          console.log((error as Error).message);
-          exit(1);
-        }
-        return true;
-      })
       .strict()
       .help(),
   async ({ metric, time, type, from, example }) => {
+    try {
+      if (example) {
+        await checkExample(example);
+        if (metric) checkMetric(metric, example);
+      }
+
+      if (time) checkTime(time);
+    } catch (error: any) {
+      console.log((error as Error).message);
+      exit(1);
+    }
+
     let diggerConfig;
     try {
       console.log('process.cwd()', process.cwd());
