@@ -2,9 +2,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
-import { getPDF } from './export';
-import { createWebServer } from './fe_build';
-import metricData from '../mock/metricData.json';
+import { exportFun } from './export';
 import { metricInfo } from './metric/metricInfo';
 import { MetricFroms, MetricValues } from './types';
 import { search } from './search';
@@ -73,22 +71,7 @@ cli.command(
   'export',
   'Export a static file',
   args => args.strict().help(),
-  async () => {
-    console.log('---export----');
-    const server = await createWebServer({
-      info: {
-        owner: 'owner1',
-        name: 'test'
-      },
-      metricData
-    });
-    await server.listen();
-    server.printUrls();
-    console.log('--->', server?.resolvedUrls?.local[0]);
-    const url = server?.resolvedUrls?.local[0];
-    if (url) await getPDF(url);
-    server.close();
-  }
+  exportFun
 );
 
 cli

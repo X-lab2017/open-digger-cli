@@ -1,4 +1,6 @@
 import puppeteer from 'puppeteer';
+import { createWebServer } from './fe_build';
+import metricData from '../mock/metricData.json';
 
 export const getPDF = async (url: string) => {
   const browser = await puppeteer.launch({ headless: 'new' });
@@ -22,4 +24,21 @@ export const getPDF = async (url: string) => {
   });
 
   await browser.close();
+};
+
+export const exportFun = async () => {
+  console.log('---export----');
+  const server = await createWebServer({
+    info: {
+      owner: 'owner1',
+      name: 'test'
+    },
+    metricData
+  });
+  await server.listen();
+  server.printUrls();
+  console.log('local--->', server?.resolvedUrls?.local[0]);
+  const url = server?.resolvedUrls?.local[0];
+  if (url) await getPDF(url);
+  server.close();
 };
