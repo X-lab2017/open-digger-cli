@@ -34,11 +34,7 @@ body {
 }
 
 @media print {
-  h1 {
-    background-color: red;
-  }
   body{
     margin: 0;
-    /* background-color: red; */
   }
 }

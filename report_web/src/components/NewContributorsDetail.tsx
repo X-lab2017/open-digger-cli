@@ -12,7 +12,7 @@ export const NewContributorsDetail = ({
       <h4 style={{ textAlign: 'center', color: '#464646', fontWeight: 700 }}>
         {title}
       </h4>
-      <ol style={{ listStyle: 'none' }}>
+      <ol style={{ listStyle: 'none', padding: 0 }}>
         {Object.entries(data).map(([key, contributors]) => (
           <li key={key}>
             <h5 style={{ margin: '0' }}>{key}</h5>
