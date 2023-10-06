@@ -25,14 +25,21 @@ function App() {
           <span style={{ fontWeight: 'bold', marginRight: '0.5rem' }}>
             Owner:
           </span>
-          {info.owner}
+          <a href={`https://github.com/${info.owner}`} target="_blank">
+            {info.owner}
+          </a>
         </li>
 
         <li>
           <span style={{ fontWeight: 'bold', marginRight: '0.5rem' }}>
             Repo Name:
           </span>
-          {info.name}
+          <a
+            href={`https://github.com/${info.owner}/${info.name}`}
+            target="_blank"
+          >
+            {info.name}
+          </a>
         </li>
 
         <li>
@@ -43,7 +50,7 @@ function App() {
             href={`https://github.com/${info.owner}/${info.name}`}
             target="_blank"
           >
-            {info.owner}/{info.name}
+            https://github.com/{info.owner}/{info.name}
           </a>
         </li>
 
