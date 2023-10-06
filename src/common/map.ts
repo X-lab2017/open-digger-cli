@@ -1,10 +1,10 @@
-import { metricList } from '../metric/metricList';
+import { metricInfo } from '../metric/metricInfo';
 import { MetricReloEnum } from '../types';
 
 export const getMetricRoleMap = () => {
   const metricMap = new Map<string, MetricReloEnum[]>();
-  metricList.forEach(({ key, role }) => {
-    metricMap.set(key, role);
+  Object.values(metricInfo).forEach(({ file, role }) => {
+    metricMap.set(file, role);
   });
   return metricMap;
 };

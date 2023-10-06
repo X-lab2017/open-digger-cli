@@ -1,7 +1,13 @@
+import { MetricReloEnum } from '../types';
+
 export type MetricInfoItemType = Record<
   'name' | 'type' | 'from' | 'file',
   string
-> & { key: string[]; dataIndexBy: DataIndexByEnum };
+> & {
+  key: string[];
+  dataIndexBy: DataIndexByEnum;
+  role: MetricReloEnum[];
+};
 
 export interface MetricInfoType {
   [K: string]: MetricInfoItemType;
@@ -21,7 +27,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'openrank',
     key: ['openrank'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO, MetricReloEnum.USER]
   },
   activity: {
     name: 'Activity',
@@ -29,7 +36,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'activity',
     key: ['activity'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO, MetricReloEnum.USER]
   },
   attention: {
     name: 'Attention',
@@ -37,7 +45,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'attention',
     key: ['attention'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   active_dates_and_times: {
     name: 'Active dates and times',
@@ -45,7 +54,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'active_dates_and_times',
     key: ['active_dates_and_times'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   stars: {
     name: 'Stars',
@@ -53,7 +63,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'stars',
     key: ['stars'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   technical_fork: {
     name: 'Technical fork',
@@ -61,7 +72,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'technical_fork',
     key: ['technical_fork'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   participants: {
     name: 'Participants',
@@ -69,7 +81,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'participants',
     key: ['participants'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   new_contributors: {
     name: 'New contributors',
@@ -77,7 +90,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'new_contributors',
     key: ['new_contributors'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   new_contributors_detail: {
     name: 'New contributors (Detail)',
@@ -85,7 +99,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'new_contributors_detail',
     key: ['new_contributors', 'new_contributors_detail'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   inactive_contributors: {
     name: 'Inactive contributors',
@@ -93,7 +108,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'inactive_contributors',
     key: ['inactive_contributors'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   bus_factor: {
     name: 'Bus factor',
@@ -101,7 +117,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'bus_factor',
     key: ['bus_factor'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   bus_factor_detail: {
     name: 'Bus factor (Detail)',
@@ -109,7 +126,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'bus_factor_detail',
     key: ['bus_factor', 'bus_factor_detail'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issues_new: {
     name: 'Issues new',
@@ -117,7 +135,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'issues_new',
     key: ['issues_new'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issues_closed: {
     name: 'Issues closed',
@@ -125,7 +144,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'issues_closed',
     key: ['issues_closed'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_comments: {
     name: 'Issue comments',
@@ -133,7 +153,8 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'issue_comments',
     key: ['issue_comments'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_response_time: {
     name: 'Issue response time',
@@ -141,7 +162,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'issue_response_time',
     key: ['issue_response_time'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_resolution_duration: {
     name: 'Issue resolution duration',
@@ -149,7 +171,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'issue_resolution_duration',
     key: ['issue_resolution_duration'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   issue_age: {
     name: 'Issue age',
@@ -157,7 +180,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'issue_age',
     key: ['issue_age'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_add: {
     name: 'Code change lines add',
@@ -165,7 +189,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'code_change_lines_add',
     key: ['code_change_lines_add'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_remove: {
     name: 'Code change lines',
@@ -173,7 +198,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'code_change_lines_remove',
     key: ['code_change_lines_remove'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   code_change_lines_sum: {
     name: 'Code change lines sum',
@@ -181,7 +207,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'code_change_lines_sum',
     key: ['code_change_lines_sum'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests: {
     name: 'Change requests (Open PR)',
@@ -189,7 +216,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_requests',
     key: ['change_requests'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests_accepted: {
     name: 'Change requests accepted(Merged PR)',
@@ -197,7 +225,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_requests_accepted',
     key: ['change_requests_accepted'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_requests_reviews: {
     name: 'Change requests reviews',
@@ -205,7 +234,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_requests_reviews',
     key: ['change_requests_reviews'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_response_time: {
     name: 'Change request response time',
@@ -213,7 +243,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_request_response_time',
     key: ['change_request_response_time'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_resolution_duration: {
     name: 'Change request resolution duration',
@@ -221,7 +252,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_request_resolution_duration',
     key: ['change_request_resolution_duration'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   change_request_age: {
     name: 'Change request age',
@@ -229,7 +261,8 @@ export const metricInfo: MetricInfoType = {
     from: 'CHAOSS',
     file: 'change_request_age',
     key: ['change_request_age'],
-    dataIndexBy: DataIndexByEnum.TAG_AND_TIME
+    dataIndexBy: DataIndexByEnum.TAG_AND_TIME,
+    role: [MetricReloEnum.REPO]
   },
   activity_details: {
     name: 'Activity Details',
@@ -237,6 +270,7 @@ export const metricInfo: MetricInfoType = {
     from: 'X-lab',
     file: 'activity_details',
     key: ['activity_details'],
-    dataIndexBy: DataIndexByEnum.TIME
+    dataIndexBy: DataIndexByEnum.TIME,
+    role: [MetricReloEnum.REPO]
   }
 };

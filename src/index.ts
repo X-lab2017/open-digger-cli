@@ -3,13 +3,13 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
-import { metricList } from './metric/metricList';
 import { checkExample, checkMetric, checkTime } from './common/check';
 import { fetchAndFilterSingleMetricData } from './common/metric';
 import { getPDF } from './export';
 import { createWebServer } from './fe_build';
 import metricData from '../mock/metricData.json';
 import { loadConfig } from 'unconfig';
+import { metricInfo } from './metric/metricInfo';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -34,7 +34,7 @@ cli.command(
         alias: 'm',
         type: 'string',
         describe: 'The metrics for the query',
-        choices: metricList.map(({ key }) => key),
+        choices: Object.values(metricInfo).map(({ file }) => file),
         array: true
       })
       .option('time', {
