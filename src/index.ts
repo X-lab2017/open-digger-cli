@@ -6,6 +6,7 @@ import { exportFun } from './export';
 import { metricInfo } from './metric/metricInfo';
 import { MetricFroms, MetricValues } from './types';
 import { search } from './search';
+import { chat } from './chat';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -62,9 +63,7 @@ cli.command(
   'chat',
   'Query metrics through conversation',
   args => args.strict().help(),
-  async () => {
-    console.log('---chat----');
-  }
+  chat
 );
 
 cli.command(

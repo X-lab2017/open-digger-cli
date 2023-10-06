@@ -23,6 +23,9 @@ dependencies:
   node-fetch:
     specifier: ^3.3.1
     version: registry.npmjs.org/node-fetch@3.3.1
+  prompts:
+    specifier: ^2.4.2
+    version: registry.npmjs.org/prompts@2.4.2
   puppeteer:
     specifier: ^21.3.8
     version: registry.npmjs.org/puppeteer@21.3.8(typescript@5.0.4)
@@ -49,6 +52,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.1.7
     version: registry.npmjs.org/@types/node@20.1.7
+  '@types/prompts':
+    specifier: ^2.4.5
+    version: registry.npmjs.org/@types/prompts@2.4.5
   '@types/react':
     specifier: ^18.2.6
     version: registry.npmjs.org/@types/react@18.2.6
@@ -1017,6 +1023,15 @@ packages:
     resolution: {integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/node/-/node-20.1.7.tgz}
     name: '@types/node'
     version: 20.1.7
+
+  registry.npmjs.org/@types/prompts@2.4.5:
+    resolution: {integrity: sha512-TvrzGMCwARi2qqXcD7VmvMvfMP3F7JRQpeEHECK0oufRNZInoBqzd8v/1zksKFE5XW8OOGto/5FsDT8lnpvGRA==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/prompts/-/prompts-2.4.5.tgz}
+    name: '@types/prompts'
+    version: 2.4.5
+    dependencies:
+      '@types/node': registry.npmjs.org/@types/node@20.1.7
+      kleur: registry.npmjs.org/kleur@3.0.3
+    dev: true
 
   registry.npmjs.org/@types/prop-types@15.7.8:
     resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.8.tgz}
@@ -2217,6 +2232,12 @@ packages:
       graceful-fs: registry.npmjs.org/graceful-fs@4.2.11
     dev: true
 
+  registry.npmjs.org/kleur@3.0.3:
+    resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz}
+    name: kleur
+    version: 3.0.3
+    engines: {node: '>=6'}
+
   registry.npmjs.org/kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/kolorist/-/kolorist-1.8.0.tgz}
     name: kolorist
@@ -2702,6 +2723,16 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: false
 
+  registry.npmjs.org/prompts@2.4.2:
+    resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/prompts/-/prompts-2.4.2.tgz}
+    name: prompts
+    version: 2.4.2
+    engines: {node: '>= 6'}
+    dependencies:
+      kleur: registry.npmjs.org/kleur@3.0.3
+      sisteransi: registry.npmjs.org/sisteransi@1.0.5
+    dev: false
+
   registry.npmjs.org/proxy-agent@6.3.1:
     resolution: {integrity: sha512-Rb5RVBy1iyqOtNl15Cw/llpeLH8bsb37gM1FUfKQ+Wck6xHlbAhWGUFiTRHtkjqGTA5pSHz6+0hrPW/oECihPQ==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/proxy-agent/-/proxy-agent-6.3.1.tgz}
     name: proxy-agent
@@ -2945,6 +2976,12 @@ packages:
     name: signal-exit
     version: 3.0.7
     dev: true
+
+  registry.npmjs.org/sisteransi@1.0.5:
+    resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz}
+    name: sisteransi
+    version: 1.0.5
+    dev: false
 
   registry.npmjs.org/size-sensor@1.0.2:
     resolution: {integrity: sha512-2NCmWxY7A9pYKGXNBfteo4hy14gWu47rg5692peVMst6lQLPKrVjhY+UTEsPI5ceFRJSl3gVgMYaUi/hKuaiKw==, registry: https://registry.npmjs.com/, tarball: https://registry.npmjs.org/size-sensor/-/size-sensor-1.0.2.tgz}
