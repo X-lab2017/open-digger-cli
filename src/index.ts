@@ -89,6 +89,7 @@ cli.command(
           console.log(`user: ${example}`);
         }
         console.log(`repo.url:https://github.com/${example}`);
+        if (time) console.log(`month: ${time}`);
         for (let metricItem of metric) {
           const data = await fetchAndFilterSingleMetricData(
             example,
