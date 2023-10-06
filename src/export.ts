@@ -12,6 +12,7 @@ export const getPDF = async (url: string) => {
     printBackground: true,
     displayHeaderFooter: false,
     format: 'A4',
+    width: '23cm',
     margin: {
       top: '3.7cm',
       left: '2.6cm',

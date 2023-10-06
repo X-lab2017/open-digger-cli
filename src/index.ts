@@ -9,6 +9,7 @@ import { fetchAndFilterSingleMetricData } from './common/metric';
 import { getPDF } from './export';
 import { createWebServer } from './fe_build';
 import metricData from '../mock/metricData.json';
+import { loadConfig } from 'unconfig';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -59,6 +60,25 @@ cli.command(
       .strict()
       .help(),
   async ({ metric, time, example }) => {
+    let diggerConfig;
+    try {
+      console.log('process.cwd()', process.cwd());
+      const { config, sources } = await loadConfig<{ beforAll?: Function }>({
+        sources: [
+          {
+            files: 'digger.config',
+            extensions: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'json', '']
+          }
+        ],
+        merge: false
+        // cwd: 'D:/Demo/digger-plugin'
+      });
+      console.log('==========>', config, sources);
+      diggerConfig = config;
+    } catch (error) {
+      console.log('err', error);
+    }
+
     try {
       if (example && metric && metric.length > 0) {
         if (example.includes('/')) {
@@ -75,10 +95,12 @@ cli.command(
             metricItem,
             time
           );
-          console.log(
-            `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
-            data
-          );
+
+          diggerConfig?.beforAll?.({ metric, time, example, data }) ||
+            console.log(
+              `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
+              data
+            );
         }
       }
     } catch (error: any) {
