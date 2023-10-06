@@ -4,18 +4,36 @@ import { getExampleType, getStartAndEndFromTime } from './analyze';
 import { checkDateIsValidyyyyMM, checkMonthIsBeforeyyyyMM } from './day';
 import { getMetricRoleMap } from './map';
 import { MetricReloEnum } from '../types';
+import { fetchMetaData } from './fetch';
 
-export const checkExample = (example: string) => {
-  const flag =
-    getExampleType(example) === MetricReloEnum.REPO
-      ? /^[^\/]+\/[^\/]+$/g.test(example)
-      : /^[^\/]+$/.test(example);
+export const checkExample = async (example: string) => {
+  const isRepo = getExampleType(example) === MetricReloEnum.REPO;
+  const flag = isRepo
+    ? /^[^\/]+\/[^\/]+$/g.test(example)
+    : /^[^\/]+$/.test(example);
   if (!flag)
     throw new Error(
       `${bgRed('ERROR:')} ${red('Please confirm that the')} ${lightYellow(
         example
       )} ${red('is correct.')}`
     );
+
+  const [owner, repoName] = example.split('/');
+  const metaData = await fetchMetaData<{
+    repos?: Array<{ name: string; id: number }>;
+  }>(owner);
+
+  if (repoName) {
+    const isEffectiveExample = metaData?.repos?.some(
+      ({ name }) => name === example
+    );
+    if (!isEffectiveExample)
+      throw new Error(
+        `${bgRed('ERROR:')} ${lightYellow(owner)}${red("'s")} ${lightYellow(
+          repoName
+        )} ${red('has no data for the time being.')}`
+      );
+  }
 };
 
 export const checkMetric = (metric: string[], example: string) => {

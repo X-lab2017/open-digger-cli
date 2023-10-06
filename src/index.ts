@@ -4,7 +4,10 @@ import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
 import { checkExample, checkMetric, checkTime } from './common/check';
-import { fetchAndFilterSingleMetricData } from './common/metric';
+import {
+  fetchAndFilterSingleMetricData,
+  filterMetricList
+} from './common/metric';
 import { getPDF } from './export';
 import { createWebServer } from './fe_build';
 import metricData from '../mock/metricData.json';
@@ -58,10 +61,10 @@ cli.command(
         describe:
           'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
       })
-      .check(({ example, metric, time }) => {
+      .check(async ({ example, metric, time }) => {
         try {
           if (example) {
-            checkExample(example);
+            await checkExample(example);
             if (metric) checkMetric(metric, example);
           }
 
@@ -95,7 +98,8 @@ cli.command(
     }
 
     try {
-      if (example && metric && metric.length > 0) {
+      const metricList = filterMetricList(metric, type, from);
+      if (example && metricList && metricList.length > 0) {
         if (example.includes('/')) {
           const [owner, name] = example?.split('/');
           console.log(`repo.owner: ${owner}`);
@@ -105,14 +109,14 @@ cli.command(
         }
         console.log(`repo.url:https://github.com/${example}`);
         if (time) console.log(`month: ${time}`);
-        for (let metricItem of metric) {
+        for (let metricItem of metricList) {
           const data = await fetchAndFilterSingleMetricData(
             example,
             metricItem,
             time
           );
 
-          diggerConfig?.beforAll?.({ metric, time, example, data }) ||
+          diggerConfig?.beforAll?.({ metricList, time, example, data }) ||
             console.log(
               `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
               data

@@ -1,10 +1,9 @@
 import { MetricFromEnum, MetricReloEnum, MetricTypeEnum } from '../types';
 
-export type MetricInfoItemType = Record<
-  'name' | 'type' | 'from' | 'file',
-  string
-> & {
+export type MetricInfoItemType = Record<'name' | 'file', string> & {
   key: string[];
+  type: MetricTypeEnum;
+  from: MetricFromEnum;
   dataIndexBy: DataIndexByEnum;
   role: MetricReloEnum[];
 };
