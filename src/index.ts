@@ -1,19 +1,13 @@
-import { exit } from 'node:process';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
-import { checkExample, checkMetric, checkTime } from './common/check';
-import {
-  fetchAndFilterSingleMetricData,
-  filterMetricList
-} from './common/metric';
 import { getPDF } from './export';
 import { createWebServer } from './fe_build';
 import metricData from '../mock/metricData.json';
-import { loadConfig } from 'unconfig';
 import { metricInfo } from './metric/metricInfo';
 import { MetricFroms, MetricValues } from './types';
+import { search } from './search';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -63,70 +57,7 @@ cli.command(
       })
       .strict()
       .help(),
-  async ({ metric, time, type, from, example }) => {
-    try {
-      if (example) {
-        await checkExample(example);
-        if (metric) checkMetric(metric, example);
-      }
-
-      if (time) checkTime(time);
-    } catch (error: any) {
-      console.log((error as Error).message);
-      exit(1);
-    }
-
-    let diggerConfig;
-    try {
-      console.log('process.cwd()', process.cwd());
-      const { config, sources } = await loadConfig<{ beforAll?: Function }>({
-        sources: [
-          {
-            files: 'digger.config',
-            extensions: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'json', '']
-          }
-        ],
-        merge: false
-        // cwd: 'D:/Demo/digger-plugin'
-      });
-      console.log('==========>', config, sources);
-      diggerConfig = config;
-    } catch (error) {
-      console.log('err', error);
-    }
-
-    try {
-      const metricList = filterMetricList(metric, type, from);
-      if (example && metricList && metricList.length > 0) {
-        if (example.includes('/')) {
-          const [owner, name] = example?.split('/');
-          console.log(`repo.owner: ${owner}`);
-          console.log(`repo.name: ${name}`);
-        } else {
-          console.log(`user: ${example}`);
-        }
-        console.log(`repo.url:https://github.com/${example}`);
-        if (time) console.log(`month: ${time}`);
-        for (let metricItem of metricList) {
-          const data = await fetchAndFilterSingleMetricData(
-            example,
-            metricItem,
-            time
-          );
-
-          diggerConfig?.beforAll?.({ metricList, time, example, data }) ||
-            console.log(
-              `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
-              data
-            );
-        }
-      }
-    } catch (error: any) {
-      console.log((error as Error).message);
-      exit(1);
-    }
-    console.log('digger:', example, metric, type, from, time);
-  }
+  input => search(input)
 );
 
 cli.command(
