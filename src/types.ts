@@ -17,3 +17,11 @@ export enum MetricFromEnum {
 }
 
 export const MetricFroms = [MetricFromEnum.XLab, MetricFromEnum.CHAOSS];
+
+export type SearchAndExportInput = Partial<
+  Record<'example' | 'time', string> & {
+    metric: string[];
+    type: MetricTypeEnum[];
+    from: MetricFromEnum[];
+  }
+>;

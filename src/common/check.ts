@@ -3,8 +3,13 @@ import { bgRed, lightYellow, red } from 'kolorist';
 import { getExampleType, getStartAndEndFromTime } from './analyze';
 import { checkDateIsValidyyyyMM, checkMonthIsBeforeyyyyMM } from './day';
 import { getMetricRoleMap } from './map';
-import { MetricReloEnum } from '../types';
+import { MetricReloEnum, SearchAndExportInput } from '../types';
 import { fetchMetaData } from './fetch';
+
+export type CheckExampleAndMetricAndTimeInput = Pick<
+  SearchAndExportInput,
+  'example' | 'metric' | 'time'
+>;
 
 export const checkExample = async (example: string) => {
   const isRepo = getExampleType(example) === MetricReloEnum.REPO;
@@ -75,4 +80,17 @@ export const checkTime = (time: string) => {
         'is not before the'
       )} ${lightYellow(endMonth)}${red('.')}`
     );
+};
+
+export const checkExampleAndMetricAndTime = async ({
+  example,
+  metric,
+  time
+}: CheckExampleAndMetricAndTimeInput) => {
+  if (example) {
+    await checkExample(example);
+    if (metric) checkMetric(metric, example);
+  }
+
+  if (time) checkTime(time);
 };
