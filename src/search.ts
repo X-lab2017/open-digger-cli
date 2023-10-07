@@ -5,7 +5,7 @@ import {
   filterMetricList
 } from './common/metric';
 import { loadDiggerConfig } from './common/loadDiggerConfig';
-import { SearchAndExportInput } from './types';
+import { CliKeys, SearchAndExportInput } from './types';
 
 export const search = async ({
   metric,
@@ -38,7 +38,12 @@ export const search = async ({
           time
         );
 
-        diggerConfig?.beforAll?.({ metricList, time, example, data }) ||
+        diggerConfig?.cli?.[metricItem as CliKeys]?.({
+          metricList,
+          time,
+          example,
+          data
+        }) ||
           console.log(
             `${example.includes('/') ? 'repo' : 'user'}.${metricItem}: `,
             data

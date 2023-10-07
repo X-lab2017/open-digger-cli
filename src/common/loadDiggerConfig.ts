@@ -1,9 +1,10 @@
 import { loadConfig } from 'unconfig';
+import { ConfigExport } from '../types';
 
 export const loadDiggerConfig = async () => {
   try {
     console.log('process.cwd()', process.cwd());
-    const { config, sources } = await loadConfig<{ beforAll?: Function }>({
+    const { config, sources } = await loadConfig<ConfigExport>({
       sources: [
         {
           files: 'digger.config',
