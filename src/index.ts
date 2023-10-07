@@ -103,6 +103,11 @@ cli.command(
         describe:
           'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
       })
+      .option('fileName', {
+        alias: 'F',
+        type: 'string',
+        describe: 'Export file name'
+      })
       .strict()
       .help(),
   input => exportFun(input)

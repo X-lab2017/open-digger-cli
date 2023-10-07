@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url';
 const __dirname = fileURLToPath(new URL('../report_web', import.meta.url));
 
 export const getViteConfig = (data?: Object) => {
-  console.log('__dirname', __dirname);
   const { plugins, ...otherViteConfig } = mergeConfig(defaultViteConfig, {});
   return {
     ...otherViteConfig,
