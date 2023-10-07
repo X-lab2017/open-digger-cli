@@ -2,6 +2,8 @@
 
 > 📈 一个查询 [open-digger][1] 指标的 CLI 工具。
 
+📺 B 站视频：[[OpenSODA]open-digger-cli](https://www.bilibili.com/video/BV1YG411m73S/)
+
 ## 💡 功能 & 路线图
 
 - ✅ 基础的指标查询，支持指定特定的指标、时间范围。
@@ -57,6 +59,21 @@ digger --help
 # 或
 
 digger -h
+```
+
+**注：** 目前导出功能还有些问题，如需体验请按下面方式安装：
+
+```bash
+npm rm @stevending1st/open-digger-cli -g
+git clone git@github.com:stevending1st/open-digger-cli.git
+cd open-digger-cli
+npm link
+```
+
+如需卸载请执行：
+
+```bash
+npm rm @stevending1st/open-digger-cli -g
 ```
 
 ### 子命令帮助
