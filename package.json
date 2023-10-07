@@ -1,6 +1,6 @@
 {
   "name": "@stevending1st/open-digger-cli",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "OpenDigger CLI",
   "bin": {
     "digger": "bin/index.mjs"
@@ -55,6 +55,7 @@
     "rimraf": "^5.0.5",
     "unconfig": "^0.3.9",
     "vite": "^4.3.8",
+    "vite-plugin-commonjs": "^0.9.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
