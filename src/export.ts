@@ -36,8 +36,9 @@ export const exportFun = async ({
   time,
   type,
   from,
-  example
-}: SearchAndExportInput) => {
+  example,
+  fileName
+}: SearchAndExportInput & { fileName?: string }) => {
   await checkExampleAndMetricAndTime({ example, metric, time });
 
   // const diggerConfig = await loadDiggerConfig();
@@ -69,7 +70,10 @@ export const exportFun = async ({
     await server.listen();
     server.printUrls();
     const url = server?.resolvedUrls?.local[0];
-    if (url) await getPDF(url, 'hello');
+    const exportFileName =
+      fileName || `${owner}-${repoName}-${new Date().getTime()}`;
+    if (url) await getPDF(url, exportFileName);
     server.close();
+    console.log('Generated files:', exportFileName + '.pdf');
   }
 };
