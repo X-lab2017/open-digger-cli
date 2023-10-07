@@ -13,7 +13,8 @@ export default defineConfig({
     openDiggerDataPlugin({
       info: {
         owner: 'testOwner',
-        name: 'testName'
+        name: 'testName',
+        time: '202201-202212'
       },
       metricData
     })

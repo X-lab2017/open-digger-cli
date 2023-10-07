@@ -1,6 +1,6 @@
 {
   "name": "@stevending1st/open-digger-cli",
-  "version": "0.0.1-bate-0.0.1",
+  "version": "0.0.1",
   "description": "OpenDigger CLI",
   "bin": {
     "digger": "bin/index.mjs"
@@ -46,6 +46,8 @@
     "echarts-for-react": "^3.0.2",
     "kolorist": "^1.8.0",
     "node-fetch": "^3.3.1",
+    "prompts": "^2.4.2",
+    "puppeteer": "^21.3.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "unconfig": "^0.3.9",
@@ -55,17 +57,14 @@
   "devDependencies": {
     "@types/date-and-time": "^0.13.0",
     "@types/node": "^20.1.7",
+    "@types/prompts": "^2.4.5",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "@types/yargs": "^17.0.24",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
-    "puppeteer": "^20.2.1",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1"
-  },
-  "peerDependencies": {
-    "puppeteer": "^20.2.1"
   }
 }

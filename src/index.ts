@@ -2,12 +2,11 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import pkginfo from '../package.json';
-import { getPDF } from './export';
-import { createWebServer } from './fe_build';
-import metricData from '../mock/metricData.json';
+import { exportFun } from './export';
 import { metricInfo } from './metric/metricInfo';
 import { MetricFroms, MetricValues } from './types';
 import { search } from './search';
+import { chat } from './chat';
 
 const cli = yargs(hideBin(process.argv))
   .scriptName('digger')
@@ -64,31 +63,49 @@ cli.command(
   'chat',
   'Query metrics through conversation',
   args => args.strict().help(),
-  async () => {
-    console.log('---chat----');
-  }
+  chat
 );
 
 cli.command(
-  'export',
+  'export [example]',
   'Export a static file',
-  args => args.strict().help(),
-  async () => {
-    console.log('---export----');
-    const server = await createWebServer({
-      info: {
-        owner: 'owner1',
-        name: 'test'
-      },
-      metricData
-    });
-    await server.listen();
-    server.printUrls();
-    console.log('--->', server?.resolvedUrls?.local[0]);
-    const url = server?.resolvedUrls?.local[0];
-    if (url) await getPDF(url);
-    server.close();
-  }
+  args =>
+    args
+      .positional('example', {
+        type: 'string',
+        describe:
+          'User or repository, owner/repo or owner (e.g., X-lab2017/open-digger, torvalds)'
+      })
+      .option('metric', {
+        alias: 'm',
+        type: 'string',
+        describe: 'The metrics for the query',
+        choices: Object.values(metricInfo).map(({ file }) => file),
+        array: true
+      })
+      .option('type', {
+        alias: 'T',
+        type: 'string',
+        describe: 'Filter indicator type',
+        choices: MetricValues,
+        array: true
+      })
+      .option('from', {
+        alias: 'f',
+        type: 'string',
+        describe: 'Filter Metric sources',
+        choices: MetricFroms,
+        array: true
+      })
+      .option('time', {
+        alias: 't',
+        type: 'string',
+        describe:
+          'The time range of the query, the format is yyyyMM or yyyyMM-yyyyMM, (e.g., 202203, 201912-202212)'
+      })
+      .strict()
+      .help(),
+  input => exportFun(input)
 );
 
 cli
