@@ -67,6 +67,7 @@ digger -h
 npm rm @stevending1st/open-digger-cli -g
 git clone git@github.com:stevending1st/open-digger-cli.git
 cd open-digger-cli
+npm run dev
 npm link
 ```
 
@@ -309,6 +310,24 @@ user.openrank:  {
   '2021-12': 1.85
 }
 ```
+
+#### 过滤指定来源的指标
+
+```bash
+digger <example> -f <from>
+```
+
+例如： `digger X-lab2017/open-digger -f x-lab chaoss`;
+`digger X-lab2017/open-digger -f x-lab`
+
+#### 过滤指定类型的指标
+
+```bash
+digger <example> -T <type>
+```
+
+`digger X-lab2017/open-digger -T index`;
+`digger X-lab2017/open-digger -T metric index`
 
 ### 导出文件
 
