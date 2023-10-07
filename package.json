@@ -1,6 +1,6 @@
 {
   "name": "@stevending1st/open-digger-cli",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "OpenDigger CLI",
   "bin": {
     "digger": "bin/index.mjs"

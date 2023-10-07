@@ -73,7 +73,7 @@ export const exportFun = async ({
     const exportFileName =
       fileName || `${owner}-${repoName}-${new Date().getTime()}`;
     if (url) await getPDF(url, exportFileName);
-    server.close();
+    // server.close();
     console.log('Generated files:', exportFileName + '.pdf');
   }
 };
