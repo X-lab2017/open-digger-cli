@@ -22,6 +22,7 @@ export const search = async ({
     const metricList = filterMetricList(metric, type, from);
 
     if (example && metricList && metricList.length > 0) {
+      console.log('=======================');
       if (example.includes('/')) {
         const [owner, name] = example?.split('/');
         console.log(`repo.owner: ${owner}`);
@@ -54,5 +55,4 @@ export const search = async ({
     console.log((error as Error).message);
     exit(1);
   }
-  console.log('digger:', example, metric, type, from, time);
 };

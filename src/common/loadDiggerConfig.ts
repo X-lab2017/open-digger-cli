@@ -3,7 +3,6 @@ import { ConfigExport } from '../types';
 
 export const loadDiggerConfig = async () => {
   try {
-    console.log('process.cwd()', process.cwd());
     const { config, sources } = await loadConfig<ConfigExport>({
       sources: [
         {
@@ -14,7 +13,7 @@ export const loadDiggerConfig = async () => {
       merge: false
       // cwd: 'D:/Demo/digger-plugin'
     });
-    console.log('==========>', config, sources);
+    sources?.forEach(item => console.log('Read configuration file: ', item));
     return config;
   } catch (error) {
     console.log('err', error);
